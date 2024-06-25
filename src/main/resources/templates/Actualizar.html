@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Actualizar Producto</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo-container">
+                <img src="/img/logoP.png" alt="Logo de la empresa" class="logo">
+            </div>
+            <div class="header-content">
+                <h1>Actualizar Producto Electrónico</h1>
+            </div>
+        </header>
+        <main>
+            <form action="/actualizar" method="post" class="update-form">
+                <div class="form-group">
+                    <label for="codigoProducto">Código:</label>
+                    <input type="text" id="codigoProducto" name="codigoProducto" th:value="${producto.codigoProducto}" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="nombreProducto">Nombre:</label>
+                    <input type="text" id="nombreProducto" name="nombreProducto" th:value="${producto.nombreProducto}" required>
+                </div>
+                <div class="form-group">
+                    <label for="marca">Marca:</label>
+                    <input type="text" id="marca" name="marca" th:value="${producto.marca}" required>
+                </div>
+                <div class="form-group">
+                    <label for="fechaFabricacion">Fecha de Fabricación:</label>
+                    <input type="date" id="fechaFabricacion" name="fechaFabricacion" th:value="${#dates.format(producto.fechaFabricacion, 'yyyy-MM-dd')}" required>
+                </div>
+                <div class="form-group">
+                    <label for="precio">Precio:</label>
+                    <input type="number" id="precio" name="precio" step="0.01" th:value="${producto.precio}" required>
+                </div>
+                <div class="form-group">
+                    <label for="descripcion">Descripción:</label>
+                    <textarea id="descripcion" name="descripcion" required th:text="${producto.descripcion}"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="categoria">Categoría:</label>
+                    <select id="categoria" name="categoria.categoriaId" required>
+                        <option th:each="categoria : ${lst_categorias}" th:value="${categoria.categoriaId}" th:text="${categoria.nombreCategoria}" th:selected="${producto.categoria.categoriaId == categoria.categoriaId}"></option>
+                    </select>
+                </div>
+                <div class="button-container">
+                    <button type="submit">Actualizar</button>
+                </div>
+            </form>
+            <a href="/" class="button">Volver a la lista de productos</a>
+        </main>
+        <footer>
+            <div class="copyright">
+                <p>&copy; 2024 EcoTecnoMaster. Todos los derechos reservados.</p>
+                <p>Desarrollado por [Tu Nombre]</p>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

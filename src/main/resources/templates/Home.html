@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home - EcoTecnoMaster</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <script>
+        function limpiarCampoBusqueda() {
+            document.getElementById('codigoBuscado').value = '';
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo-container">
+                <img src="/img/logoP.png" alt="Logo de la empresa" class="logo">
+            </div>
+            <div class="header-content">
+                <h1>Lista de Productos Electrónicos</h1>
+                <form action="/producto" method="get" class="search-form">
+                    <label for="codigoBuscado">Buscar producto por código:</label>
+                    <input type="text" id="codigoBuscado" name="id">
+                    <button type="submit">Buscar</button>
+                    <a href="#" class="button" onclick="limpiarCampoBusqueda()">Limpiar</a>
+                </form>
+            </div>
+        </header>
+        <main>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Nombre</th>
+                        <th>Marca</th>
+                        <th>Fecha de Fabricación</th>
+                        <th>Precio</th>
+                        <th>Descripción</th>
+                        <th>Categoría</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="producto : ${lst_productos}">
+                        <td th:text="${producto.codigoProducto}"></td>
+                        <td th:text="${producto.nombreProducto}"></td>
+                        <td th:text="${producto.marca}"></td>
+                        <td th:text="${#dates.format(producto.fechaFabricacion, 'yyyy-MM-dd')}"></td>
+                        <td th:text="${producto.precio}"></td>
+                        <td th:text="${producto.descripcion}"></td>
+                        <td th:text="${producto.categoria.nombreCategoria}"></td>
+                        <td class="actions">
+                            <a th:href="@{'/actualizar/' + ${producto.codigoProducto}}" class="edit">Editar</a>
+                            <a th:href="@{'/delete/' + ${producto.codigoProducto}}" class="delete" onclick="return confirm('¿Estás seguro de eliminar este producto?');">Eliminar</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <a href="/registrar" class="button">Registrar nuevo producto</a>
+        </main>
+        <footer>
+            <div class="copyright">
+                <p>&copy; 2024 EcoTecnoMaster. Todos los derechos reservados.</p>
+                <p>Desarrollado por [Tu Nombre]</p>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
