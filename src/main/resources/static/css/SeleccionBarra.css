@@ -1,0 +1,70 @@
+/* Estilos para la barra de navegación */
+.navbar {
+    background-color: #1a1a1d; /* Color de fondo oscuro */
+    padding: 10px 20px;
+    position: relative; /* Posición relativa para colocar encima del contenido */
+    z-index: 1000; /* Asegura que esté encima de otros elementos */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra suave */
+}
+
+.navbar ul {
+    list-style-type: none;
+    margin: 15px;
+    padding: 0;
+}
+
+.navbar li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.navbar a {
+    color: #fff; /* Color del texto de los enlaces */
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px 20px; /* Espaciado interno */
+    border-radius: 0px; /* Bordes redondeados */
+    transition: background-color 0.3s, color 0.3s; /* Transiciones suaves */
+    position: relative;
+    z-index: 1;
+}
+
+.navbar a:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Fondo con transparencia */
+    color: #f39c12; /* Color del texto al pasar el mouse */
+}
+
+/* Estilos para los botones */
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #f39c12; /* Color de fondo del botón */
+    color: #fff; /* Color del texto del botón */
+    text-decoration: none;
+    border-radius: 30px;
+    transition: background-color 0.3s; /* Transición suave del color de fondo */
+  
+}
+
+.button:hover {
+    background-color: #e74c3c; /* Color de fondo más oscuro al pasar el mouse */
+}
+
+/* Estilos para el logo */
+.logo-container {
+    position: relative; /* Posición relativa para fluir en el documento */
+    margin-top: 10px; /* Espacio entre la barra y el logo */
+    text-align: center; /* Centra horizontalmente */
+    z-index: 900; /* Asegura que esté debajo de la barra de navegación */
+}
+
+.logo {
+    width: 50%; /* Ajuste el tamaño según sea necesario */
+}
+
+/* Estilos para el contenido principal */
+.container {
+    position: relative; /* Asegura que el contenido principal fluya debajo */
+    margin-top: 20px; /* Ajuste para dejar espacio suficiente para el logo */
+    padding-bottom: 20px; /* Espacio adicional hacia abajo para evitar superposiciones */
+}

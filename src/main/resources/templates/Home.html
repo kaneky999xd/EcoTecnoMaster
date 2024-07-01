@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Home - EcoTecnoMaster</title>
     <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/SeleccionBarra.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <script>
         function limpiarCampoBusqueda() {
@@ -14,6 +15,12 @@
 <body>
     <div class="container">
         <header class="header">
+            <nav class="navbar">
+                <ul>
+                    <li><a href="/" class="active">Inicio</a></li>
+                    <li><a href="/carrito">Carrito</a></li>
+                </ul>
+            </nav>
             <div class="logo-container">
                 <img src="/img/logoP.png" alt="Logo de la empresa" class="logo">
             </div>
@@ -53,11 +60,13 @@
                         <td class="actions">
                             <a th:href="@{'/actualizar/' + ${producto.codigoProducto}}" class="edit">Editar</a>
                             <a th:href="@{'/delete/' + ${producto.codigoProducto}}" class="delete" onclick="return confirm('¿Estás seguro de eliminar este producto?');">Eliminar</a>
+                              <a th:href="@{'/producto/agregarCarrito/' + ${producto.codigoProducto}}" class="add-to-cart">Agregar al Carrito</a>
                         </td>
                     </tr>
                 </tbody>
             </table>
             <a href="/registrar" class="button">Registrar nuevo producto</a>
+            <a href="/carrito" class="button">Agregar al Carrito</a>
         </main>
         <footer>
             <div class="copyright">
